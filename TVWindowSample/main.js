@@ -146,46 +146,6 @@
     }
 
     /**
-     * @description Changes the source of TV hole window to HDMI
-     * @method tvWindow.setHDMIsource()
-     * @public
-     */
-    function setHDMIsource() {
-        var connectedVideoSources;
-        function successCB(source, type) {
-            log("setSource() is successfully done. source name = " + source.name + ", source port number = " + source.number);
-        }
-
-        function errorCB(error) {
-            log("setSource() is failed. Error name = "+ error.name + ", Error message = " + error.message);
-        }
-
-        function systemInfoSuccessCB(videoSource) {
-            connectedVideoSources = videoSource.connected;
-            for (var i = 0; i < connectedVideoSources.length; i++) {
-                log("--------------- Source " + i + " ---------------");
-                log("type = " + connectedVideoSources[i].type);
-                log("number = " + connectedVideoSources[i].number);
-                if (connectedVideoSources[i].type === "HDMI") {
-                    // set HDMI as input source of TV hole window
-                    tvWindowObj.setSource(connectedVideoSources[i], successCB, errorCB);
-                    break;
-                }
-            }
-        }
-
-        function systemInfoErrorCB(error) {
-            log("getPropertyValue(VIDEOSOURCE) is failed. Error name = "+ error.name + ", Error message = " + error.message);
-        }
-
-        try {
-            tizen.systeminfo.getPropertyValue("VIDEOSOURCE", systemInfoSuccessCB, systemInfoErrorCB);
-        } catch (error) {
-            log("Error name = "+ error.name + ", Error message = " + error.message);
-        }
-    };
-
-    /**
      * @description Gets the list of available windows.
      * @method tvWindow.getAvailableWindows()
      * @public
