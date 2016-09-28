@@ -74,8 +74,7 @@
     }
 
 
-    var tvWindowObj,
-        tvWindowCoordinates = ["10px", "300px", "50%", "540px"],
+    var tvWindowCoordinates = ["10px", "300px", "50%", "540px"],
         display = true;
 
     /**
@@ -101,7 +100,7 @@
             // successCB - The method to invoke when the position and size of the TV window has been changed successfully.
             // null - errorCallback [optional] [nullable] : The method to invoke when an error occurs.
             // MAIN - The window type. By default, this attribute is set to MAIN.
-            tvWindowObj.show(successCB, null, param, "MAIN");
+            tizen.tvwindow.show(successCB, null, param, "MAIN");
         } catch(error) {
             log("error: " + error.name);
         }
@@ -119,7 +118,7 @@
         }
 
         try {
-            tvWindowObj.hide(successCB);
+            tizen.tvwindow.hide(successCB);
         } catch(error) {
             log("error: " + error.name);
         }
@@ -159,7 +158,7 @@
         }
 
         try {
-            tvWindowObj.getAvailableWindows(successCB);
+            tizen.tvwindow.getAvailableWindows(successCB);
         } catch (error) {
             log("Error name = "+ error.name + ", Error message = " + error.message);
         }
@@ -172,7 +171,7 @@
      */
     function getSource() {
         try {
-            var source = tvWindowObj.getSource();
+            var source = tizen.tvwindow.getSource();
             log("Source type: " + source.type + "number = " + source.number);
         } catch (error) {
             console.log("Error name = "+ error.name + ", Error message = " + error.message);
@@ -192,7 +191,7 @@
         }
 
         try {
-            tvWindowObj.getRect(rectangleCB);
+            tizen.tvwindow.getRect(rectangleCB);
         } catch(error) {
             log("error: " + error.name);
         }
@@ -208,8 +207,6 @@
         }
 
         displayVersion();
-
-        tvWindowObj = tizen.tvwindow;
 
         registerKeys();
         registerKeyHandler();
