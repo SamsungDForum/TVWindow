@@ -57,7 +57,7 @@
                     tizen.application.getCurrentApplication().exit();
                     break;
                 default:
-                    log("keycode: " + keyEvent.keyCode);
+                    log("keycode: " + e.keyCode);
                     break;
             }
         });
